@@ -6,25 +6,24 @@
 #    By: mdoll <mdoll@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/29 13:17:26 by mdoll             #+#    #+#              #
-#    Updated: 2022/12/30 15:01:38 by mdoll            ###   ########.fr        #
+#    Updated: 2023/01/02 13:02:38 by mdoll            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRC = ft_printf.c pchar.c pstr.c pperc.c pdecint.c
+SRC = ft_printf.c pchar.c pstr.c pperc.c pdecint.c pudec.c phex.c pvoidp.c
 
 OBJS = $(SRC:.c=.o)
 
 CFLAGS = -Wall -Wextra -Werror
 
-# LIBS = -L./libft -lft
+# path to main
+MAIN = ./main.c
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-# make -C ./libft
-# gcc $(CFLAGS) -c $(SRC)  && ar -rcs $(NAME) $(OBJS) ./libft/libft.a
 	@make -C ./libft
 	@cp libft/libft.a .
 	@mv libft.a $(NAME)
@@ -40,13 +39,16 @@ fclean: clean
 	
 re: fclean all
 
+# compiles everything and creates executable
 gcc: all clean
-	@gcc $(CFLAGS) -o executable main.c libftprintf.a
+	@gcc $(CFLAGS) -o executable $(MAIN) libftprintf.a
 
+# compiles everything and runs executable
 gcco: all clean
-	@gcc $(CFLAGS) -o executable main.c libftprintf.a
+	@gcc $(CFLAGS) -o executable $(MAIN) libftprintf.a
 	@ ./executable
-	
+
+# deletes all objects, .a and executable	
 call: fclean
 	rm -f executable
 

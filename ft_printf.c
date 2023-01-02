@@ -6,12 +6,11 @@
 /*   By: mdoll <mdoll@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 13:34:43 by mdoll             #+#    #+#             */
-/*   Updated: 2022/12/30 15:01:12 by mdoll            ###   ########.fr       */
+/*   Updated: 2022/12/31 12:37:27 by mdoll            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./ft_printf.h"
-
 
 static int	call_functions(const char c, va_list ap)
 {
@@ -21,16 +20,14 @@ static int	call_functions(const char c, va_list ap)
 		chars_printed = pchar(va_arg(ap, int));
 	if (c == 's')
 		chars_printed = pstr(va_arg(ap, char *));
-	// if (c == 'p')
-	// 	chars_printed = pvoidp(va_arg(ap, void *));
+	if (c == 'p')
+		chars_printed = pvoidp(va_arg(ap, unsigned long long));
 	if (c == 'd' || c == 'i')
 		chars_printed = pdecint(va_arg(ap, int));
-	// if (c == 'u')
-	// 	chars_printed = pudec(va_arg(ap, unsigned float));
-	// if (c == 'x')
-	// 	chars_printed = phex_l(va_arg(ap, int)); // wich datatype??
-	// if (c == 'X')
-	// 	chars_printed = phex_u(va_arg(ap, int)); // wich datatype??
+	if (c == 'u')
+		chars_printed = pudec(va_arg(ap, unsigned int));
+	if (c == 'X' || c == 'x')
+		chars_printed = phex(c, va_arg(ap, unsigned int));
 	if (c == '%')
 		chars_printed = pperc();
 	return (chars_printed);
@@ -59,5 +56,6 @@ int	ft_printf(const char *str, ...)
 		}
 		i++;
 	}
+	va_end(ap);
 	return (chars_printed);
 }
