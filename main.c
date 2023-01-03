@@ -6,7 +6,7 @@
 /*   By: mdoll <mdoll@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 09:34:17 by mdoll             #+#    #+#             */
-/*   Updated: 2023/01/02 13:04:21 by mdoll            ###   ########.fr       */
+/*   Updated: 2023/01/03 13:42:42 by mdoll            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(void)
 	ft_printf("test with %%s\n");
 	ft_printf("%s\n", str);
 	printf("--------------\n");
-	
+
 	ft_printf("test with %%c\n");
 	ft_printf("%c\n", str[3]);
 	printf("--------------\n");
