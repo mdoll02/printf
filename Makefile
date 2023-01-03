@@ -6,7 +6,7 @@
 #    By: mdoll <mdoll@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/29 13:17:26 by mdoll             #+#    #+#              #
-#    Updated: 2023/01/02 13:02:38 by mdoll            ###   ########.fr        #
+#    Updated: 2023/01/02 13:09:36 by mdoll            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ MAIN = ./main.c
 
 all: $(NAME)
 
+# runs make in libft folder, copies .a, renames .a, compiles complete libary
 $(NAME): $(OBJS)
 	@make -C ./libft
 	@cp libft/libft.a .
